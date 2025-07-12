@@ -1,9 +1,8 @@
 spring:
   application:
     name: instagrat
+  ai:
+    mistralai:
+      api-key: ${MISTRAL_AI_TOKEN}
+      model: open-mistral-7b
 
-  neo4j:
-    uri: bolt://localhost:7687
-    authentication:
-      username: neo4j
-      password: instagrat
