@@ -23,4 +23,9 @@ public class UserController {
     public Flux<AppUser> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    @PostMapping("/{followerId}/follow/{followeeId}")
+    public Mono<AppUser> follow(@PathVariable Long followerId, @PathVariable Long followeeId) {
+        return userService.followUser(followerId, followeeId);
+    }
 }
