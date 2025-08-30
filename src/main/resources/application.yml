@@ -1,6 +1,13 @@
 spring:
   application:
     name: instagrat
+  ai:
+    vectorstore:
+      pinecone:
+        apiKey: pcsk_6ge8fM_PyKhh9VcYjwtCHbkojCpbVkVqs5cEraay9TPq9p7ixEZPqWJFJLz9CZ2BoHHkZW
+        environment: aped-4627-b74a
+        projectId: witfwyi
+        indexName: springai
 
   neo4j:
     uri: bolt://localhost:7687

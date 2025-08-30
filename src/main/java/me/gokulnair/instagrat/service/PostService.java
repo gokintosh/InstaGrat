@@ -5,6 +5,7 @@ import me.gokulnair.instagrat.controller.dto.PostDto;
 import me.gokulnair.instagrat.entity.Post;
 import me.gokulnair.instagrat.repo.PostRepository;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -37,5 +38,9 @@ public class PostService {
                                 .thenReturn(savedPost)
                 );
 
+    }
+
+    public Flux<Post> getAllPosts(){
+        return postRepository.findAll();
     }
 }
