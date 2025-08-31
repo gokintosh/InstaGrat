@@ -43,4 +43,7 @@ public class PostService {
     public Flux<Post> getAllPosts(){
         return postRepository.findAll();
     }
+
+    //when I send my userId , then fetch the posts t
+
 }

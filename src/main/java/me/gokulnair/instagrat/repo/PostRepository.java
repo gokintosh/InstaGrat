@@ -4,6 +4,7 @@ import me.gokulnair.instagrat.entity.Post;
 import org.springframework.data.neo4j.repository.ReactiveNeo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface PostRepository extends ReactiveNeo4jRepository<Post,Long> {
@@ -19,6 +20,17 @@ public interface PostRepository extends ReactiveNeo4jRepository<Post,Long> {
             relationship.updatedAt = localdatetime()
             """)
     Mono<Void> createUserPostRelation(@Param("postId") Long postId, @Param("userId") Long userId);
+
+
+    @Query("""
+            MATCH (user:AppUser {userId: $userId})-[:CREATED_POST]->(post:Post)
+            RETURN post
+            ORDER BY post.createdAt DESC
+            """)
+    Flux<Post> getAllPostsForUser(@Param("userId") Long userId);
+
+
+
 
 }
 

@@ -2,6 +2,9 @@ spring:
   application:
     name: instagrat
   ai:
+    mistralai:
+      apiKey: XQ7d38Ltbw3hX3iAMib6RPaNxtIhaaQq
+      model: open-mistral-7b
     vectorstore:
       pinecone:
         apiKey: pcsk_6ge8fM_PyKhh9VcYjwtCHbkojCpbVkVqs5cEraay9TPq9p7ixEZPqWJFJLz9CZ2BoHHkZW

@@ -19,9 +19,27 @@ configurations {
 	}
 }
 
+ext {
+	springAiVersion = '1.0.0-M5'
+}
+
 repositories {
 	mavenCentral()
+	maven { url = uri("https://repo.spring.io/milestone") }
 }
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.ai:spring-ai-bom:$springAiVersion"
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
@@ -34,6 +52,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-pinecone-store-spring-boot-starter
 	implementation("org.springframework.ai:spring-ai-pinecone-store-spring-boot-starter:1.0.0-M6")// https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-autoconfigure-vector-store-pinecone
 	implementation("org.springframework.ai:spring-ai-autoconfigure-vector-store-pinecone:1.0.0-M8")
+
+
+//	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+	implementation 'org.springframework.ai:spring-ai-mistral-ai-spring-boot-starter'
+//	 implementation 'org.springframework.ai:spring-ai-ollama-spring-boot-starter'
+
 }
 
 tasks.named('test') {
