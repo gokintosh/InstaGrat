@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/grok")
+@RequestMapping("/brok")
 @RequiredArgsConstructor
 public class GrokController {
 
@@ -77,12 +77,12 @@ public class GrokController {
                 )
         );
 
-        SearchRequest searchRequest = SearchRequest.builder().query(prompt).filterExpression(String.valueOf(Map.of("userId",userId))).build();
+//        SearchRequest searchRequest = SearchRequest.builder().query(prompt).filterExpression(Map.of("userId", userId)).build();
 
         return Mono.fromCallable(()->
                 this.chatClient.prompt(p)
                         .advisors(new QuestionAnswerAdvisor(
-                                store,searchRequest
+                                store
                         )).call()
                         .content()
                 ).subscribeOn(Schedulers.boundedElastic());
